@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
 
-// const config: SocketIoConfig = { url: 'http://10.105.52.11:3000/', options: {} };
+const config: SocketIoConfig = { url: 'http://172.16.227.33:3000/', options: {} };
 
 @NgModule({
   declarations: [
@@ -18,6 +18,7 @@ import { TodoItemComponent } from './todo-item/todo-item.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    SocketIoModule.forRoot(config),
     HttpClientModule,
     ReactiveFormsModule
   ],

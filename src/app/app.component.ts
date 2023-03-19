@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { JiraService } from './jira.service';
 import { TodoService } from './todo.service';
 
 @Component({
@@ -21,6 +22,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private todoService: TodoService,
+    private jiraService: JiraService,
   ) {
     this.taskFormGroup = new FormGroup({
       title: new FormControl('', [Validators.required])
@@ -30,11 +32,13 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.todoList = [
-      {id: 1, title: 'My first task'},
-      {id: 2, title: 'My second task'},
-      {id: 3, title: 'My third task'},
-      {id: 4, title: 'My forth task'},
-    ]
+    ];
+/////////////////////////
+    this.jiraService.getMessage().subscribe(
+      task => {
+        this.todoList.push(task)
+      }
+    )
   }
 
   handleCompleted(id: any) {
@@ -47,10 +51,9 @@ export class AppComponent implements OnInit {
   handleDelete(id: any) {
     this.todoList = this.todoList.filter((todo: any) => id !== todo.id);
   }
-
+/////////////////////////
   addTask() {
-    console.log(this.taskFormGroup.value);
-    this.todoList.push({...this.taskFormGroup.value, id: this.counter++});
+    this.jiraService.sendMessage(this.taskFormGroup.value);
     this.taskFormGroup.get('title')?.setValue('');
   }
 
