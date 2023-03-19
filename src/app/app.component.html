@@ -1,3 +1,9 @@
+<form (submit)="addTask()" [formGroup]="taskFormGroup">
+  <input placeholder="Please enter your task title" formControlName="title" />
+  <button type="submit">
+    Add Task
+  </button>
+</form>
 <div class="todo-container">
     <ng-container *ngFor="let todo of todoList">
       <app-todo-item [id]="todo.id" [title]="todo.title" [isCompleted]="todo.completed"

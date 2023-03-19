@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TodoService } from './todo.service';
 
 @Component({
@@ -12,11 +13,18 @@ export class AppComponent implements OnInit {
   todoList: any[] = [];
   title!: string;
   username!: string;
+
+  counter = 5;
+
+  taskFormGroup!: FormGroup;
   
 
   constructor(
     private todoService: TodoService,
   ) {
+    this.taskFormGroup = new FormGroup({
+      title: new FormControl('', [Validators.required])
+    })
   }
 
 
@@ -38,6 +46,12 @@ export class AppComponent implements OnInit {
 
   handleDelete(id: any) {
     this.todoList = this.todoList.filter((todo: any) => id !== todo.id);
+  }
+
+  addTask() {
+    console.log(this.taskFormGroup.value);
+    this.todoList.push({...this.taskFormGroup.value, id: this.counter++});
+    this.taskFormGroup.get('title')?.setValue('');
   }
 
 }
