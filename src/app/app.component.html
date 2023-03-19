@@ -1,0 +1,9 @@
+<div class="todo-container">
+  <div>
+    <ng-container *ngFor="let todo of todoList">
+      <app-todo-item [id]="todo.id" [title]="todo.title" [isCompleted]="todo.completed"
+        (completed)="handleCompleted($event)"
+        (fireDelete)="handleDelete($event)"></app-todo-item>
+    </ng-container>
+  </div>
+</div>

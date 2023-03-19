@@ -1,0 +1,12 @@
+<div class="todo-item" [ngClass]="{isCompleted}">
+    <span class="title">
+        {{title}}
+    </span>
+    <button (click)="markCompleted()" *ngIf="!isCompleted">
+        Mark Done
+    </button>
+
+    <button (click)="deleteTodo()" style="background: red;">
+        Delete ME !!!
+    </button>
+</div>

@@ -1,0 +1,28 @@
+.todo-item {
+    margin: 5px;
+    padding: 10px;
+    padding-top: 50px;
+    border-radius: 10px;
+    background-image: url('https://i.pinimg.com/originals/71/6d/60/716d609bcb461d893984f74648498124.png');
+    background-size: contain;
+    width: 200px;
+    height: 150px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    text-align: center;
+    * {
+        display: block;
+        margin: 5px auto;
+    }
+    small {
+        font-size: 10px;
+    }
+    .title {
+        max-width: 115px;
+        max-height: 50px;
+        overflow-y: auto;
+    }
+    &.isCompleted {
+        filter: hue-rotate(55deg);
+    }
+}
