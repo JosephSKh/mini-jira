@@ -2,6 +2,7 @@
     <span class="title">
         {{title}}
     </span>
+    <small *ngIf="username"><i>Assignee: {{username}}</i></small>
     <button (click)="markCompleted()" *ngIf="!isCompleted">
         Mark Done
     </button>

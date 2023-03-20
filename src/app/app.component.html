@@ -1,4 +1,5 @@
 <form (submit)="addTask()" [formGroup]="taskFormGroup">
+  <input placeholder="username" formControlName="username" />
   <input placeholder="Please enter your task title" formControlName="title" />
   <button type="submit">
     Add Task
@@ -6,7 +7,8 @@
 </form>
 <div class="todo-container">
     <ng-container *ngFor="let todo of todoList">
-      <app-todo-item [id]="todo.id" [title]="todo.title" [isCompleted]="todo.completed"
+      <app-todo-item [id]="todo.id" [title]="todo.title"
+      [username]="todo.username" [isCompleted]="todo.completed"
         (completed)="handleCompleted($event)"
         (fireDelete)="handleDelete($event)"></app-todo-item>
     </ng-container>

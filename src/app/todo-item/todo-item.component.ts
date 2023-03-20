@@ -9,6 +9,7 @@ export class TodoItemComponent {
 
   @Input() id!: number;
   @Input() title!: string;
+  @Input() username!: string;
   @Input() isCompleted!: boolean;
 
   @Output() completed: EventEmitter<number> = new EventEmitter<number>();

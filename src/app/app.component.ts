@@ -25,7 +25,8 @@ export class AppComponent implements OnInit {
     private jiraService: JiraService,
   ) {
     this.taskFormGroup = new FormGroup({
-      title: new FormControl('', [Validators.required])
+      username: new FormControl('', [Validators.required]),
+      title: new FormControl('', [Validators.required]),
     })
   }
 
@@ -36,7 +37,7 @@ export class AppComponent implements OnInit {
 /////////////////////////
     this.jiraService.getMessage().subscribe(
       task => {
-        this.todoList.push(task)
+        this.todoList.unshift(task)
       }
     )
   }
